@@ -15,6 +15,7 @@ class _NotesFavouriteState extends State<NotesFavourite> {
 
   @override
   void initState() {
+    super.initState();
     controller.refreshItems();
   }
 
@@ -30,30 +31,44 @@ class _NotesFavouriteState extends State<NotesFavourite> {
                   itemBuilder: (context, index) {
                     var items = controller.noteFavourites[index];
                     var color = Color(int.parse(items["color"]));
-                    return Container(
-                      height: 200,
-                      decoration: BoxDecoration(
-                        color: color,
-                        border: Border.all(width: 1, color: Colors.black),
-                      ),
-                      child: Column(
-                        children: [
-                          Text(items["title"],
-                              style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold)),
-                          SizedBox(height: 30),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                  child: Text(
-                                items["description"],
+                    return Card(
+                      elevation: 10,
+                      child: Container(
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color: color,
+                          border: Border.all(width: 1, color: Colors.black),
+                        ),
+                        child: Column(
+                          children: [
+                            Text(items["title"],
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.w500),
-                              )),
-                            ],
-                          )
-                        ],
+                                    fontSize: 25, fontWeight: FontWeight.bold)),
+                            SizedBox(height: 30),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                    child: Text(
+                                  items["description"],
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
+                                )),
+                              ],
+                            ),
+                            SizedBox(height: 100),
+                            Row(
+                              children: [
+                                Spacer(),
+                                Text("Category: ${items["category"]}",
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500)),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   }))),

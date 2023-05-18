@@ -11,7 +11,8 @@ import 'package:notes_keeper/screens/notes_favourite.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  await Hive.openBox("notes");
+  await Hive.openBox("notes-trackers");
+  await Hive.openBox("categories-trackers");
   runApp(MyApp());
 }
 
